@@ -16,18 +16,65 @@
     height: 100svh;
 }
 
-header {
-    @include display-flex;
-    flex: .6;
-}
-
 main {
     @include display-flex;
     flex-direction: row;
     flex: 5;
+    .side-bar-left {
+        @include display-flex();
+        flex-direction: column;
+        flex: 1;
+        .profile-icon {
+            flex: 1;
+            border: solid;
+        }
+        .add-tab {
+            flex: .5;
+            border: solid;
+        }
+        .project-list {
+            flex: 6;
+            border: solid;
+        }
+    }
+    .side-bar-right {
+        @include display-flex();
+        flex-direction: column;
+        flex: 1;
+        .suggest {
+            flex: .6;
+            border: solid;
+        }
+        .suggested-items {
+            flex: 9;
+            border: solid;
+        }
+    }
+    .display-list {
+        @include display-flex();
+        flex-direction: column;
+        flex: 5;
+        header {
+            @include display-flex();
+            flex-direction: row;
+            flex: 1.5;
+            .greet {
+                border: solid pink;
+                flex: 8;
+            }
+            .date {
+                flex: 1.5;
+                border: solid pink;
+            }
+        }
+        .todo-list {
+            flex: 7;
+            border: solid;
+        }
+    }
 }
 
 footer {
     @include display-flex;
-    flex: .3;
+    flex: .2;
 }
