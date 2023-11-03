@@ -25,8 +25,20 @@ main {
         flex-direction: column;
         flex: 1;
         .profile-icon {
-            flex: 1;
+            @include display-flex();
+            align-items: center;
+            flex-direction: row;
+            flex: .6;
             border: solid;
+            .icon {
+                border: solid;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+            }
+        }
+        .upgrade {
+            @include display-flex();
         }
         .add-tab {
             flex: .5;
@@ -41,6 +53,9 @@ main {
         @include display-flex();
         flex-direction: column;
         flex: 1;
+        .settings {
+            @include display-flex();
+        }
         .suggest {
             flex: .6;
             border: solid;
