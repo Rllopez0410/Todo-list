@@ -8,12 +8,14 @@
     display: flex;
     justify-content: center;
     border: 1px solid pink;
+    background-color: rgb(24, 24, 24);
 }
 
 .content {
-    @include display-flex;
+    @include display-flex();
     font-family:Georgia, 'Times New Roman', Times, serif;
     flex-direction: column;
+    color: rgb(165, 165, 165);
     height: 100svh;
 }
 
@@ -35,14 +37,18 @@ main {
             border: solid;
             .icon-div {
                 @include display-flex();
-
             } 
             .icon {
                 @include display-flex();
+                background-image: url(./images/preview.jpg);
+                background-size: contain;
                 border: solid;
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
+            }
+            .icon-name {
+                color: white;
             }
         }
         .upgrade {
@@ -54,11 +60,41 @@ main {
                 background-color: rgb(24, 97, 255);
                 width: 150px;
                 border-radius: 50px;
+                cursor: pointer;
             }
         }
         .add-tab {
-            flex: .5;
-            border: solid;
+            @include display-flex();
+            align-items: center;
+            flex: .4;
+            #add-proj-icon{
+                color:  rgb(24, 97, 255);
+                padding-left: 10px;
+            }
+            .add-proj-text {
+                flex: 5;
+                padding-left: 10px;
+            }
+            .item-count {
+                @include display-flex();
+                align-items: center;
+                flex: 2;
+                .count {
+                    @include display-flex();
+                    align-items: center;
+                    border-radius: 100px;
+                    background-color: red;
+                    color: rgb(255, 255, 255);
+                    font-size: 12px;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            #add-proj-btn {
+                color:  rgb(24, 97, 255);
+                flex: 1;
+                cursor: pointer;
+            }
         }
         .project-list {
             flex: 6;
@@ -107,6 +143,7 @@ main {
                 font-weight: 900;
                 .name {
                     display: flex;
+                    color: white;
                     align-items: center;
                     flex: 1;
                     border: solid;
@@ -124,10 +161,12 @@ main {
                 flex: 1.5;
                 border: solid pink;
                 .weekday {
+                    color: rgb(207, 207, 207);
                     flex: 1;
                     font-size: 24px;
                 }
                 .date {
+                    color: white;
                     font-size: 64px;
                     flex: 3;
                 }
@@ -141,13 +180,20 @@ main {
             }
         }
         .todo-list {
+            @include display-flex();
+            flex-direction: column;
             flex: 7;
             border: solid;
+            .task-list {
+                @include display-flex();
+                flex: 1;
+                margin: 55px; 
+            }
         }
         .search {
             @include display-flex();
             align-items: center;
-            flex: .5;
+            flex: .5;           
             border: solid;
             .search-bar {
                 display: flex;
@@ -157,7 +203,9 @@ main {
                 border: 1px solid;
                 border-radius: 5px;
                 .search-input {
+                    background-color: rgba(0, 0, 0, 0);
                     padding-left: 5px;
+                    color: white;
                     border: none;
                     outline: none;                    
                     width: 450px;
@@ -167,6 +215,7 @@ main {
                     cursor: pointer;
                 }
                 #upload {
+                    color:  rgb(24, 97, 255);
                     cursor: pointer;
                 }  
             }
