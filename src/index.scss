@@ -54,11 +54,13 @@ main {
         .upgrade {
             @include display-flex();
             flex: .4;
+            align-items: center;
             .upgrade-btn {
                 @include display-flex();
                 align-items: center;
                 background-color: rgb(24, 97, 255);
                 width: 150px;
+                height: 32px;
                 border-radius: 50px;
                 cursor: pointer;
             }
@@ -97,8 +99,24 @@ main {
             }
         }
         .project-list {
+            flex-direction: column;
             flex: 6;
             border: solid;
+            padding: 15px;
+            .project-item {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-direction: row;
+                background-color: rgb(47, 47, 47);
+                width: 200px;
+                height: 50px;
+                border-radius: 12px;
+                cursor:default;
+                #project-dlt {
+                    cursor: pointer;
+                }
+            }
         }
     }
     .side-bar-right {
@@ -122,8 +140,31 @@ main {
             }
         }
         .suggested-items {
+            padding: 15px;
+            flex-direction: column;
             flex: 9;
             border: solid;
+            .suggested-item {
+                @include display-flex();
+                align-items: center;
+                width: 200px;
+                height: 50px;
+                border-radius: 12px;
+                background-color: rgb(47, 47, 47);
+                #add-sug-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color:  rgb(24, 97, 255);
+                    flex: 1;
+                }
+                .sug-text {
+                    display: flex;
+                    justify-content: left;
+                    align-items: center;
+                    flex: 5;
+                }
+            }
         }
     }
     .display-list {
@@ -185,9 +226,67 @@ main {
             flex: 7;
             border: solid;
             .task-list {
-                @include display-flex();
+                display: flex;
+                flex-direction: column;
                 flex: 1;
-                margin: 55px; 
+                margin: 15px 200px 15px 200px;
+                .task-item {
+                    display: flex;
+                    border-radius: 15px;
+                    height: 85px;
+                    background-color: rgb(47, 47, 47);
+                    .check {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex: .5;
+                        #check-mark {
+                            font-size: 32px
+                        }
+                    }
+                    .task-info {
+                        display: flex;
+                        flex-direction: column;
+                        flex: 5;
+                        .info {
+                            display: flex;
+                            align-items: center;
+                            flex-direction: row;
+                            flex: 3;
+                            font-size: 12px;
+                            .task-node {
+                                flex: 1;
+                            }
+                            .due-date {
+                                flex: 5;
+                            }
+                        }
+                        .task-name {
+                            display: flex;
+                            flex: 5;
+                            color: white;
+                            font-size: 24px;
+                        }
+                    }
+                    .edit-task {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex: .3;
+                        #edit-btn {
+                            font-size: 32px;
+                        } 
+                    }
+                    .task-dlt {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex: .3;
+                        #task-dlt-btn {
+                            font-size: 32px;
+                        }
+                    }
+                } 
             }
         }
         .search {
