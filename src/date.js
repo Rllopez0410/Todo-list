@@ -5,7 +5,7 @@ export const greeter = (function() {
     const obj = {
         displayGreet: function() {
             let hour = date.getHours();
-            let ask = prompt("name?")
+            let ask = prompt("Hello, what's your name?")
             switch (true) {
                 case (hour > 17 || hour < 5):
                     greet.textContent = `Good Evening ${ask}.`;
