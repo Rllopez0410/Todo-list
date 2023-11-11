@@ -8,7 +8,10 @@ export const dailyQuote = (function() {
         "Don't judge each day by the harvest you reap but by the seeds that you plant.",
         "Change your thoughts and you change your world.",
         "The only journey is the one within.",
-        "We know what we are, but know not what we may be."
+        "We know what we are, but know not what we may be.",
+        "Life is 10% what happens to you and 90% how you react to it.",
+        "I can, therefore I am.",
+        "With the new day comes new strength and new thoughts."
     ]
     const obj = {
         randQuotes: function() {

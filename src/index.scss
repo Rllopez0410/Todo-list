@@ -99,6 +99,8 @@ main {
             }
         }
         .project-list {
+            display: flex;
+            gap: 15px;
             flex-direction: column;
             flex: 6;
             border: solid;
