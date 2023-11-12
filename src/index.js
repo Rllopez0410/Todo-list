@@ -7,15 +7,24 @@ const addBtn = document.getElementById("add-proj-btn");
 const proContainer = document.getElementById("project-list");
 
 let projects = [
-    {name: "job", complete: "false"}
+    {name: "job"}
 ];
 projects.forEach(displayProjects);
 
 function displayProjects(proj) {
     let item = document.createElement("div");
+    let folder = document.createElement("div");
+    let projName = document.createElement("p");
+    let dltBtn = document.createElement("div");
     item.classList.add("project-item");
+    projName.textContent = proj.name;
+    folder.innerHTML = '<span class="material-symbols-outlined">folder</span>';
+    dltBtn.innerHTML = '<span id="project-dlt" class="material-symbols-outlined">delete</span>';
     proContainer.appendChild(item);
-    item.textContent = proj.name;
+    item.appendChild(folder)
+    item.appendChild(projName);
+    item.appendChild(dltBtn);
+    dltBtn.addEventListener("click", () => {});
 }
 
 addBtn.addEventListener("click", addProjects);
