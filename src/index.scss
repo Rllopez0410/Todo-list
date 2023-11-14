@@ -7,8 +7,14 @@
 @mixin display-flex {
     display: flex;
     justify-content: center;
-    border: 1px solid pink;
+    border: solid greenyellow;
     background-color: rgb(24, 24, 24);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .content {
@@ -16,7 +22,7 @@
     font-family:Georgia, 'Times New Roman', Times, serif;
     flex-direction: column;
     color: rgb(165, 165, 165);
-    height: 100svh;
+    flex: 1;
 }
 
 main {
@@ -34,7 +40,6 @@ main {
             padding-left: 10px;
             flex: .6;
             gap: 10px;
-            border: solid;
             .icon-div {
                 @include display-flex();
             } 
@@ -42,7 +47,6 @@ main {
                 @include display-flex();
                 background-image: url(./images/preview.jpg);
                 background-size: contain;
-                border: solid;
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
@@ -100,11 +104,11 @@ main {
         }
         .project-list {
             display: flex;
-            gap: 15px;
             flex-direction: column;
-            flex: 6;
-            border: solid;
-            padding: 15px;
+            align-items: center;
+            overflow-y: scroll;
+            height: 700px;
+            gap: 15px;
             .project-item {
                 display: flex;
                 justify-content: space-around;
@@ -129,7 +133,6 @@ main {
             @include display-flex();
             flex-direction: row;
             flex: .4;
-            border: solid;
             .add-suggested {
                 display: flex;
                 justify-content: space-between;
@@ -145,7 +148,6 @@ main {
             padding: 15px;
             flex-direction: column;
             flex: 9;
-            border: solid;
             .suggested-item {
                 @include display-flex();
                 align-items: center;
@@ -180,7 +182,6 @@ main {
             .greet {
                 display: flex;
                 flex-direction: column;
-                border: solid pink;
                 flex: 8;
                 font-size: 24px;
                 font-weight: 900;
@@ -188,21 +189,19 @@ main {
                     display: flex;
                     color: white;
                     align-items: center;
-                    flex: 1;
-                    border: solid;
+                    flex: 1;  
                 }
                 .quote {
                     display: flex;
                     align-items: center;
-                    flex: 1;
-                    border: solid;
+                    flex: 1; 
                 }
             }
             .date {
                 display: flex;
                 flex-direction: column;
                 flex: 1.5;
-                border: solid pink;
+                
                 .weekday {
                     color: rgb(207, 207, 207);
                     flex: 1;
@@ -226,7 +225,6 @@ main {
             @include display-flex();
             flex-direction: column;
             flex: 7;
-            border: solid;
             .task-list {
                 display: flex;
                 flex-direction: column;
@@ -295,7 +293,6 @@ main {
             @include display-flex();
             align-items: center;
             flex: .5;           
-            border: solid;
             .search-bar {
                 display: flex;
                 justify-content: center;
