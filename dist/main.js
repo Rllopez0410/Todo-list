@@ -136,7 +136,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   Project: () => (/* binding */ Project),\n/* harmony export */   Tasks: () => (/* binding */ Tasks)\n/* harmony export */ });\nclass Project {\n    constructor(name) {\n        this.name = name;\n    }\n}\n\nclass Tasks {\n    constructor(name, dueDate) {\n        this.name = name;\n        this.dueDate = dueDate;\n        this.completed = false;\n    }\n}\n\n//# sourceURL=webpack://todo-list/./src/class.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   Project: () => (/* binding */ Project),\n/* harmony export */   Projects: () => (/* binding */ Projects),\n/* harmony export */   Task: () => (/* binding */ Task),\n/* harmony export */   Tasks: () => (/* binding */ Tasks)\n/* harmony export */ });\n//class for an individual project\nclass Project {\n    constructor(name) {\n        this.name = name;\n        this.tasksArr = [];\n    }\n     get eachProject() {\n        console.log(this.name);\n    }\n    addTasksToProject(name, dueDate) {\n        let newTask = new Task(name, dueDate);\n        this.tasksArr.push(newTask);\n    }\n}\n//class for a group of projects \nclass Projects {\n    constructor() {\n        this.listOfProjects = [new Project(\"Sample Project\")];\n    }\n    addProjectToList(name) {\n        let p = new Project(name);\n        this.listOfProjects.push(p);\n        return p\n    }\n    get allProjects() {\n       return this.listOfProjects;\n    }\n    get numOfProjects() {\n        return this.listOfProjects.length;\n    }\n}\n\nclass Task {\n    constructor(name, dueDate) {\n        this.name = name;\n        this.dueDate = dueDate;\n        this.completed = false;\n    }\n}\n\nclass Tasks {\n    constructor() {}\n}\n\n//# sourceURL=webpack://todo-list/./src/class.js?");
 
 /***/ }),
 
@@ -146,7 +146,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   addProject: () => (/* binding */ addProject)\n/* harmony export */ });\n/* harmony import */ var _DOM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DOM */ \"./src/DOM.js\");\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./render */ \"./src/render.js\");\n\n\n\n_DOM__WEBPACK_IMPORTED_MODULE_0__.projectDom.listAdd.addEventListener(\"click\", addProject);\n\nfunction addProject(newProj) {\n    console.log(\"click\")\n    prompt(\"Project name?\");\n    (0,_render__WEBPACK_IMPORTED_MODULE_1__.createProject)(newProj)\n}\n\n\n//# sourceURL=webpack://todo-list/./src/eventListen.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _DOM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DOM */ \"./src/DOM.js\");\n/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./class */ \"./src/class.js\");\n\n\n\n_DOM__WEBPACK_IMPORTED_MODULE_0__.projectDom.listAdd.addEventListener(\"click\", addProjectBtn);\nlet projects = new _class__WEBPACK_IMPORTED_MODULE_1__.Projects();\nprojects.allProjects.forEach(printProjects);\nfunction printProjects(el) {\n    console.log(el);\n}\n\nfunction addProjectBtn() {\n    let projName = prompt(\"name\");\n    projects.addProjectToList(projName);\n    printProjects(projects);\n    console.log(projects.allProjects);\n}\n\n\n\n\n\n\n\n//# sourceURL=webpack://todo-list/./src/eventListen.js?");
 
 /***/ }),
 
@@ -156,7 +156,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _eventListen_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eventListen.js */ \"./src/eventListen.js\");\n\n\n// import { dateTracker, greeter } from \"./date.js\";\n// import { dailyQuote } from \"./quotes\";\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _eventListen_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eventListen.js */ \"./src/eventListen.js\");\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./render */ \"./src/render.js\");\n\n\n\n// import { dateTracker, greeter } from \"./date.js\";\n// import { dailyQuote } from \"./quotes\";\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ }),
 
@@ -166,7 +166,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ind
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createProject: () => (/* binding */ createProject)\n/* harmony export */ });\n/* harmony import */ var _DOM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DOM */ \"./src/DOM.js\");\n/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./class */ \"./src/class.js\");\n\n\n\nlet porjects = new _class__WEBPACK_IMPORTED_MODULE_1__.Project();\n\nlet arr = Array.from(porjects)\n\narr.forEach(createProject);\n\nfunction createProject(project) {\n    _DOM__WEBPACK_IMPORTED_MODULE_0__.projectDom.listDiv.appendChild(_DOM__WEBPACK_IMPORTED_MODULE_0__.newProject);\n    _DOM__WEBPACK_IMPORTED_MODULE_0__.newProject.textContent = project;\n    console.log(project)\n}\n\n\n//# sourceURL=webpack://todo-list/./src/render.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./class */ \"./src/class.js\");\n\n\n\n// let item = new Project();\n// let arr = item.allProjects;\n\n// arr.forEach(renderProjects);\n\n// export function renderProjects(p) {\n//     console.log(p)\n// };\n\n\n//# sourceURL=webpack://todo-list/./src/render.js?");
 
 /***/ }),
 
