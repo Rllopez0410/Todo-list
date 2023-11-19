@@ -4,8 +4,8 @@ export class Project {
         this.name = name;
         this.tasksArr = [];
     }
-     get eachProject() {
-        console.log(this.name);
+    get nameOfProject() {
+        return this.name;
     }
     addTasksToProject(name, dueDate) {
         let newTask = new Task(name, dueDate);
@@ -21,6 +21,9 @@ export class Projects {
         let p = new Project(name);
         this.listOfProjects.push(p);
         return p
+    }
+    get wholeProject() {
+        return new Project();
     }
     get allProjects() {
        return this.listOfProjects;
