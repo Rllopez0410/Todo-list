@@ -2,11 +2,17 @@
 export class Project {
     constructor(name) {
         this.name = name;
-        this.tasksArr = [];
+        this.tasksArr = [new Task("code", "1/2/2024")];
     }
     get nameOfProject() {
         return this.name;
     }
+    get tasksArray() {
+        return this.tasksArr;
+    }
+    // isEmpty() {
+    //     return this.tasksArr.length == 0;
+    // }
     addTasksToProject(name, dueDate) {
         let newTask = new Task(name, dueDate);
         this.tasksArr.push(newTask);
