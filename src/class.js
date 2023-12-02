@@ -2,7 +2,7 @@
 export class Project {
     constructor(name) {
         this.name = name;
-        this.tasksArr = [new Task("code", "1/2/2024")];
+        this.tasksArr = [];
     }
     get nameOfProject() {
         return this.name;
@@ -10,12 +10,13 @@ export class Project {
     get tasksArray() {
         return this.tasksArr;
     }
-    // isEmpty() {
-    //     return this.tasksArr.length == 0;
-    // }
+    isEmpty() {
+        return this.tasksArr.length == 0;
+    }
     addTasksToProject(name, dueDate) {
         let newTask = new Task(name, dueDate);
         this.tasksArr.push(newTask);
+        return newTask
     }
 }
 //class for a group of projects 

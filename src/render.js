@@ -1,32 +1,36 @@
-import { projectDom } from "./DOM";
+import { projectDom, taskDom } from "./DOM";
 import { Projects } from "./class";
 
-export let projects = new Projects();
+let projects = new Projects();
 let projArr = projects.allProjects;
 let projectId = 0;
-// let selectedProj = null;
-//create function to add task and checks which is current porject and if it's null but if not null create a new task instance and add it to selected proj and call 
+let selectedProj = null;
 
-// function renderTasks(currentProj) {
-//     const taskList = document.getElementById("task-list");
-//     if (currentProj.isEmpty) {
-//         taskList.textContent = "this project currently has no task. Please add a task below";
-//     } else {
-//        taskList.textContent = "";
-//     }
-// }
-
-//create a function that will showcase the array of tasks depending what project is being selected.
+function renderTasks(currentProj) {
+    const taskList = taskDom.listDiv;
+    if (currentProj.isEmpty()) {
+        taskList.textContent = "this project currently has no task. Please add a task below";
+    } else {
+        taskList.textContent = "";
+        currentProj.tasksArray.forEach(task => {
+            const newTaskDiv = document.createElement("div");
+            newTaskDiv.textContent = task.name;
+            newTaskDiv.classList.add("task-item");
+            taskList.appendChild(newTaskDiv);
+        });
+    }
+}
 
 function selectProject(e) {
-    let currentProj = projArr[e.currentTarget.id];
+    let currentProj = projArr[parseInt(e.currentTarget.id)];
     console.log(e.currentTarget);
-    // renderTasks(currentProj);
+    selectedProj = currentProj;
+    renderTasks(selectedProj);
+    console.log(currentProj.tasksArray);
     console.log(currentProj.name);
 }
 
-projArr.forEach(renderProjects);
-export function renderProjects(project) {
+function renderProjects(project) {
     const newProjectDiv = document.createElement("div");
     const itemDiv = document.createElement("div"); 
     const dltBtn = document.createElement("div");
@@ -49,6 +53,7 @@ export function renderProjects(project) {
     });
     newProjectDiv.addEventListener("click", selectProject);
     projectId++;
+    console.log(project.nameOfProject)
 }
 
 function resetIds(index) {
@@ -58,3 +63,24 @@ function resetIds(index) {
         element.id = i;
     }
 }
+
+//eventListeners
+projectDom.listAdd.addEventListener("click", addProjectBtn);
+taskDom.listAdd.addEventListener("click", addTaskBtn);
+
+function addProjectBtn() {
+    let projName = prompt("Name of project?");
+    let pushProject = projects.addProjectToList(projName);
+    renderProjects(pushProject);
+    console.log(projects);
+}
+
+function addTaskBtn() {
+    let taskName = taskDom.listinput.value;
+    selectedProj.addTasksToProject(taskName);
+    renderTasks(selectedProj);
+    console.log(selectedProj);
+    console.log(renderTasks(selectedProj));
+}
+
+projArr.forEach(renderProjects);
