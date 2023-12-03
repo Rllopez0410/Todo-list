@@ -230,11 +230,13 @@ main {
                 flex-direction: column;
                 flex: 1;
                 margin: 15px 200px 15px 200px;
+                border: 1px solid green;
                 .task-item {
                     display: flex;
                     border-radius: 15px;
                     height: 85px;
                     background-color: rgb(47, 47, 47);
+                    border: 1px solid green;
                     .check {
                         display: flex;
                         justify-content: center;
@@ -248,17 +250,21 @@ main {
                         display: flex;
                         flex-direction: column;
                         flex: 5;
+                        border: 1px solid green;
                         .info {
                             display: flex;
                             align-items: center;
                             flex-direction: row;
                             flex: 3;
                             font-size: 12px;
+                            border: 1px solid green;
                             .task-node {
                                 flex: 1;
+                                border: 1px solid green;
                             }
                             .due-date {
                                 flex: 5;
+                                border: 1px solid green;
                             }
                         }
                         .task-name {
@@ -266,6 +272,7 @@ main {
                             flex: 5;
                             color: white;
                             font-size: 24px;
+                            border: 1px solid green;
                         }
                     }
                     .edit-task {

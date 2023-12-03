@@ -14,8 +14,24 @@ function renderTasks(currentProj) {
         taskList.textContent = "";
         currentProj.tasksArray.forEach(task => {
             const newTaskDiv = document.createElement("div");
-            newTaskDiv.textContent = task.name;
+            const taskName = document.createElement("div");
+            const taskInfo = document.createElement("div");
+            const taskDetails = document.createElement("div");
+            const taskNode = document.createElement("div");
+            const taskDueDate = document.createElement("div");
+            taskList.classList.add("task-list");
             newTaskDiv.classList.add("task-item");
+            taskName.classList.add("task-name");
+            taskInfo.classList.add("task-info");
+            taskDetails.classList.add("info");
+            taskNode.classList.add("task-node");
+            taskDueDate.classList.add("due-date");      
+            taskName.textContent = task.name;
+            taskNode.textContent = selectedProj.name;
+            taskDueDate.textContent = task.dueDate;
+            newTaskDiv.appendChild(taskInfo);
+            taskInfo.append(taskName, taskDetails);
+            taskDetails.append(taskNode, taskDueDate);
             taskList.appendChild(newTaskDiv);
         });
     }
@@ -64,9 +80,11 @@ function resetIds(index) {
     }
 }
 
-//eventListeners
+//======eventListeners=======
+
 projectDom.listAdd.addEventListener("click", addProjectBtn);
 taskDom.listAdd.addEventListener("click", addTaskBtn);
+taskDom.taskCal.addEventListener("click", calendarBtn);
 
 function addProjectBtn() {
     let projName = prompt("Name of project?");
@@ -77,10 +95,16 @@ function addProjectBtn() {
 
 function addTaskBtn() {
     let taskName = taskDom.listinput.value;
-    selectedProj.addTasksToProject(taskName);
+    let dueDate = calendarBtn();
+    selectedProj.addTasksToProject(taskName, dueDate);
     renderTasks(selectedProj);
     console.log(selectedProj);
     console.log(renderTasks(selectedProj));
+}
+
+function calendarBtn() {
+    let dueDate = prompt("Task due date. E.g 11/11/2024");
+    return dueDate;
 }
 
 projArr.forEach(renderProjects);
