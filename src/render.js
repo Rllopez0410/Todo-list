@@ -14,25 +14,40 @@ function renderTasks(currentProj) {
         taskList.textContent = "";
         currentProj.tasksArray.forEach(task => {
             const newTaskDiv = document.createElement("div");
-            const taskName = document.createElement("div");
+            const checkMark = document.createElement("div");
             const taskInfo = document.createElement("div");
+            const editTask = document.createElement("div");
+            const dltTask = document.createElement("div");
             const taskDetails = document.createElement("div");
             const taskNode = document.createElement("div");
             const taskDueDate = document.createElement("div");
-            taskList.classList.add("task-list");
+            const taskName = document.createElement("div");
             newTaskDiv.classList.add("task-item");
-            taskName.classList.add("task-name");
+            checkMark.classList.add("check");
             taskInfo.classList.add("task-info");
+            editTask.classList.add("edit-task");
+            dltTask.classList.add("task-dlt");
             taskDetails.classList.add("info");
             taskNode.classList.add("task-node");
             taskDueDate.classList.add("due-date");      
-            taskName.textContent = task.name;
+            taskName.classList.add("task-name");
+            checkMark.innerHTML = '<span id="check-mark" class="material-symbols-outlined">check_circle</span>';
+            editTask.innerHTML = '<span id="edit-btn" class="material-symbols-outlined">edit_note</span>';
+            dltTask.innerHTML = '<span id="task-dlt-btn" class="material-symbols-outlined">close</span>';
             taskNode.textContent = selectedProj.name;
             taskDueDate.textContent = task.dueDate;
-            newTaskDiv.appendChild(taskInfo);
-            taskInfo.append(taskName, taskDetails);
+            taskName.textContent = task.name;
+            newTaskDiv.append(checkMark, taskInfo, editTask, dltTask);
+            taskInfo.append(taskDetails, taskName);
             taskDetails.append(taskNode, taskDueDate);
             taskList.appendChild(newTaskDiv);
+            Array.from(dltTask);
+            dltTask.addEventListener("click", (index) => {
+                if (currentProj.tasksArray[index] === dltTask[index]) {
+                    currentProj.tasksArray.splice(currentProj.tasksArray.indexOf(task), 1);
+                    newTaskDiv.remove();
+                }
+            });
         });
     }
 }
@@ -80,11 +95,8 @@ function resetIds(index) {
     }
 }
 
-//======eventListeners=======
-
 projectDom.listAdd.addEventListener("click", addProjectBtn);
 taskDom.listAdd.addEventListener("click", addTaskBtn);
-taskDom.taskCal.addEventListener("click", calendarBtn);
 
 function addProjectBtn() {
     let projName = prompt("Name of project?");
@@ -95,16 +107,11 @@ function addProjectBtn() {
 
 function addTaskBtn() {
     let taskName = taskDom.listinput.value;
-    let dueDate = calendarBtn();
-    selectedProj.addTasksToProject(taskName, dueDate);
+    const date = document.getElementById("date").value;
+    selectedProj.addTasksToProject(taskName, date);
     renderTasks(selectedProj);
     console.log(selectedProj);
     console.log(renderTasks(selectedProj));
-}
-
-function calendarBtn() {
-    let dueDate = prompt("Task due date. E.g 11/11/2024");
-    return dueDate;
 }
 
 projArr.forEach(renderProjects);

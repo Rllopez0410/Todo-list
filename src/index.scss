@@ -281,6 +281,7 @@ main {
                         align-items: center;
                         flex: .3;
                         #edit-btn {
+                            cursor: pointer;
                             font-size: 32px;
                         } 
                     }
@@ -290,6 +291,7 @@ main {
                         align-items: center;
                         flex: .3;
                         #task-dlt-btn {
+                            cursor: pointer;
                             font-size: 32px
                         }
                     }
@@ -316,9 +318,7 @@ main {
                     width: 450px;
                     height: 30px;
                 }
-                #calendar {
-                    cursor: pointer;
-                }
+                
                 #upload {
                     color:  rgb(24, 97, 255);
                     cursor: pointer;
