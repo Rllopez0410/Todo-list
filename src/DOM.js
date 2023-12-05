@@ -8,4 +8,5 @@ export const taskDom = {
     listDiv: document.getElementById("task-list"),
     listAdd: document.getElementById("upload"),
     listinput: document.getElementById("task-input"),
+    taskCal: document.getElementById("date-input"),
 }

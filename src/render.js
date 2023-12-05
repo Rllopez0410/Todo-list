@@ -107,8 +107,8 @@ function addProjectBtn() {
 
 function addTaskBtn() {
     let taskName = taskDom.listinput.value;
-    const date = document.getElementById("date").value;
-    selectedProj.addTasksToProject(taskName, date);
+    let taskDate = taskDom.taskCal.value;
+    selectedProj.addTasksToProject(taskName, taskDate);
     renderTasks(selectedProj);
     console.log(selectedProj);
     console.log(renderTasks(selectedProj));

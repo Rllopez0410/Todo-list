@@ -318,7 +318,14 @@ main {
                     width: 450px;
                     height: 30px;
                 }
-                
+                #date-input {
+                    border: none;
+                    outline: none;
+                    border-radius: 15px;
+                    padding: 5px;
+                    background-color: rgb(24, 97, 255);
+                    color: white;
+                }
                 #upload {
                     color:  rgb(24, 97, 255);
                     cursor: pointer;
