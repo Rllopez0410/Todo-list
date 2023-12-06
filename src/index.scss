@@ -7,7 +7,6 @@
 @mixin display-flex {
     display: flex;
     justify-content: center;
-    border: solid greenyellow;
     background-color: rgb(24, 24, 24);
 }
 
@@ -33,6 +32,8 @@ main {
         @include display-flex();
         flex-direction: column;
         flex: 1;
+        z-index: 1;
+        box-shadow: 5px 1px 12px black;
         .profile-icon {
             display: flex;
             align-items: center;
@@ -129,6 +130,8 @@ main {
         @include display-flex();
         flex-direction: column;
         flex: 1;
+        z-index: 1;
+        box-shadow: -5px 1px 12px black;
         .suggest {
             @include display-flex();
             flex-direction: row;
@@ -230,13 +233,13 @@ main {
                 flex-direction: column;
                 flex: 1;
                 margin: 15px 200px 15px 200px;
-                border: 1px solid green;
+                
                 .task-item {
                     display: flex;
                     border-radius: 15px;
                     height: 85px;
                     background-color: rgb(47, 47, 47);
-                    border: 1px solid green;
+                    
                     .check {
                         display: flex;
                         justify-content: center;
@@ -250,21 +253,21 @@ main {
                         display: flex;
                         flex-direction: column;
                         flex: 5;
-                        border: 1px solid green;
+                        
                         .info {
                             display: flex;
                             align-items: center;
                             flex-direction: row;
                             flex: 3;
                             font-size: 12px;
-                            border: 1px solid green;
+                            
                             .task-node {
                                 flex: 1;
-                                border: 1px solid green;
+                                
                             }
                             .due-date {
                                 flex: 5;
-                                border: 1px solid green;
+                                
                             }
                         }
                         .task-name {
@@ -272,7 +275,7 @@ main {
                             flex: 5;
                             color: white;
                             font-size: 24px;
-                            border: 1px solid green;
+                            
                         }
                     }
                     .edit-task {
@@ -340,4 +343,5 @@ footer {
     @include display-flex;
     align-items: center;
     flex: .2;
+    z-index: 2;
 }

@@ -9,4 +9,5 @@ export const taskDom = {
     listAdd: document.getElementById("upload"),
     listinput: document.getElementById("task-input"),
     taskCal: document.getElementById("date-input"),
+    taskCheck: document.getElementById("check-mark"),
 }

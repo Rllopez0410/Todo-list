@@ -5,6 +5,7 @@ let projects = new Projects();
 let projArr = projects.allProjects;
 let projectId = 0;
 let selectedProj = null;
+let completedTask = false;
 
 function renderTasks(currentProj) {
     const taskList = taskDom.listDiv;
@@ -42,10 +43,25 @@ function renderTasks(currentProj) {
             taskDetails.append(taskNode, taskDueDate);
             taskList.appendChild(newTaskDiv);
             Array.from(dltTask);
+            Array.from(checkMark);
+            if (task.completed == true) {
+                checkMark.style.color = "green";
+            }
             dltTask.addEventListener("click", (index) => {
                 if (currentProj.tasksArray[index] === dltTask[index]) {
                     currentProj.tasksArray.splice(currentProj.tasksArray.indexOf(task), 1);
                     newTaskDiv.remove();
+                }
+            });
+            checkMark.addEventListener("click", (index) => {
+                if (currentProj.tasksArray[index] === checkMark[index] && !completedTask) {
+                    checkMark.style.color = "green";
+                    currentProj.tasksArray.slice(currentProj.tasksArray.indexOf(task.completed = true));
+                    completedTask = true;
+                } else if (currentProj.tasksArray[index] === checkMark[index] && completedTask) {
+                    checkMark.style.color = "grey";
+                    currentProj.tasksArray.slice(currentProj.tasksArray.indexOf(task.completed = false));
+                    completedTask = false;
                 }
             });
         });
@@ -54,8 +70,8 @@ function renderTasks(currentProj) {
 
 function selectProject(e) {
     let currentProj = projArr[parseInt(e.currentTarget.id)];
-    console.log(e.currentTarget);
     selectedProj = currentProj;
+    console.log(e.currentTarget);
     renderTasks(selectedProj);
     console.log(currentProj.tasksArray);
     console.log(currentProj.name);
@@ -63,14 +79,16 @@ function selectProject(e) {
 
 function renderProjects(project) {
     const newProjectDiv = document.createElement("div");
+    const folderIcon = document.createElement("div");
     const itemDiv = document.createElement("div"); 
     const dltBtn = document.createElement("div");
     itemDiv.textContent = project.name;
+    folderIcon.innerHTML = '<span class="material-symbols-outlined">folder</span>';
     dltBtn.innerHTML = '<span class="material-symbols-outlined">delete</span>';
     newProjectDiv.classList.add("project-item");
     newProjectDiv.id = projectId;
     projectDom.listDiv.append(newProjectDiv);
-    newProjectDiv.append(itemDiv, dltBtn);
+    newProjectDiv.append(folderIcon, itemDiv, dltBtn);
     projectDom.listCounter.textContent = projects.numOfProjects;
     Array.from(dltBtn);
     dltBtn.addEventListener("click", (index) => {
@@ -90,7 +108,7 @@ function renderProjects(project) {
 function resetIds(index) {
     for (let i = index; i < projArr.length; i++) {
         const element = document.getElementById(i+1);
-        console.log(i+1)
+        console.log(i+1);
         element.id = i;
     }
 }
